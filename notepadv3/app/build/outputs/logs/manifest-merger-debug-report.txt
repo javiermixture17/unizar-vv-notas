@@ -1,0 +1,107 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+MERGED from [com.android.support:appcompat-v7:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/170561bfd645a6598806548202a5dcf6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-v4:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/support-v4-23.1.0.aar/800c0b675c5cfa5daa9e9aba53ab80e5/AndroidManifest.xml:17:1-24:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+	package
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:1-45:12
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.SEND_SMS
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:5:5-43:19
+MERGED from [com.android.support:appcompat-v7:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/170561bfd645a6598806548202a5dcf6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/170561bfd645a6598806548202a5dcf6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/support-v4-23.1.0.aar/800c0b675c5cfa5daa9e9aba53ab80e5/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/support-v4-23.1.0.aar/800c0b675c5cfa5daa9e9aba53ab80e5/AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:8:9-41
+	android:icon
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:9:9-40
+activity#es.unizar.eina.notepadv3.Notepadv3
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:10:9-18:20
+	android:label
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:12:13-45
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:11:13-38
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:16:27-74
+activity#es.unizar.eina.notepadv3.NoteEdit
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:19:9-26:20
+	android:parentActivityName
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:22:13-52
+	android:label
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:21:13-61
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:20:13-61
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:23:13-25:46
+	android:value
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:25:17-43
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:24:17-63
+activity#es.unizar.eina.notepadv3.CategoryEdit
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:27:9-34:20
+	android:parentActivityName
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:30:13-52
+	android:label
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:29:13-65
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:28:13-65
+activity#es.unizar.eina.notepadv3.CategoryList
+ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:35:9-42:20
+	android:parentActivityName
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:38:13-52
+	android:label
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:37:13-65
+	android:name
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml:36:13-65
+uses-sdk
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/170561bfd645a6598806548202a5dcf6/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/170561bfd645a6598806548202a5dcf6/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/support-v4-23.1.0.aar/800c0b675c5cfa5daa9e9aba53ab80e5/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.1.0] /home/pitazzo/.gradle/caches/transforms-1/files-1.1/support-v4-23.1.0.aar/800c0b675c5cfa5daa9e9aba53ab80e5/AndroidManifest.xml:20:5-43
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		ADDED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
+		INJECTED from /home/pitazzo/Documentos/Universidad/Verificación/Trabajo/notepadv3/app/src/main/AndroidManifest.xml
