@@ -8,7 +8,37 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
+class DateSelector {
+    private boolean esTest;
+    private Date now;
+
+    public DateSelector(boolean _esTest){
+        esTest= _esTest;
+    }
+
+    public void setTest(boolean _esTest){
+        esTest= _esTest;
+    }
+
+    public void setDate(String _date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        now = sdf.parse(_date);
+    }
+
+    public Date getNow(){
+        if(esTest){
+            return now;
+        }
+        else{
+            return new Date();
+        }
+    }
+}
 
 /**
  * Simple notes database access helper class. Defines the basic CRUD operations
@@ -47,6 +77,9 @@ public class NotesDbAdapter {
 
     /** objeto para insertar, actualizar y borrar elementos de la base de datos */
     private SQLiteDatabase mDb;
+
+    /**Seleccionar test o no*/
+    DateSelector dS = new DateSelector(false);
 
     /**
      * Database creation sql statement
@@ -165,10 +198,13 @@ public class NotesDbAdapter {
     }
 
     public long createCategory(String title){
+        /*
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
 
         return mDb.insert(DATABASE_TABLE_CATEGORIES, null, initialValues);
+        */
+        return -1;
     }
 
     /**
@@ -254,7 +290,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchPredictedNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
@@ -267,7 +303,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchActiveNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
@@ -280,7 +316,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchExpiredNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
