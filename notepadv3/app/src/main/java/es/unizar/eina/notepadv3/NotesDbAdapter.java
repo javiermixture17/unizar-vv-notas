@@ -188,6 +188,9 @@ public class NotesDbAdapter {
      * @return rowId or -1 if failed
      */
     public long createNote(String title, String body, int id_category, Date activationDate, Date expirationDate) {
+        if (title == null || title == "") {
+            return -1;
+        }
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
@@ -198,13 +201,13 @@ public class NotesDbAdapter {
     }
 
     public long createCategory(String title){
-        /*
+        if (title == null || title == "") {
+            return -1;
+        }
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
 
         return mDb.insert(DATABASE_TABLE_CATEGORIES, null, initialValues);
-        */
-        return -1;
     }
 
     /**
@@ -246,7 +249,7 @@ public class NotesDbAdapter {
 
     public Cursor fetchNotesFromCategory(int id_category){
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY, KEY_CATEGORY}, KEY_CATEGORY+"="+id_category, null, null, null, KEY_TITLE);
+                KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE}, KEY_CATEGORY+"="+id_category, null, null, null, KEY_TITLE);
     }
 
     public Cursor fetchAllCategories(){
@@ -339,6 +342,12 @@ public class NotesDbAdapter {
      * @return true if the note was successfully updated, false otherwise
      */
     public boolean updateNote(long rowId, String title, String body, int id_categoria, Date activationDate, Date expirationDate) {
+        if (title == null || title == "") {
+            return false;
+        }
+        if (body == null || body == "") {
+            return false;
+        }
         if(rowId > 0){
             ContentValues args = new ContentValues();
             args.put(KEY_TITLE, title);
@@ -354,6 +363,9 @@ public class NotesDbAdapter {
     }
 
     public boolean updateCategory(long rowId, String title) {
+        if (title == null || title == "") {
+            return false;
+        }
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);
 
