@@ -8,7 +8,37 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
+class DateSelector {
+    private boolean esTest;
+    private Date now;
+
+    public DateSelector(){
+        esTest= false;
+    }
+
+    public void setTest(){
+        esTest= true;
+    }
+
+    public void setDate(String _date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        now = sdf.parse(_date);
+    }
+
+    public Date getNow(){
+        if(esTest){
+            return now;
+        }
+        else{
+            return new Date();
+        }
+    }
+}
 
 /**
  * Simple notes database access helper class. Defines the basic CRUD operations
@@ -48,9 +78,21 @@ public class NotesDbAdapter {
     /** objeto para insertar, actualizar y borrar elementos de la base de datos */
     private SQLiteDatabase mDb;
 
+    /**Seleccionar test o no*/
+    public DateSelector dS = new DateSelector();
+
     /**
      * Database creation sql statement
      */
+    public void setTest(){
+        dS.setTest();
+    }
+
+    public void setFakeDate(String date) throws ParseException{
+        dS.setDate(date);
+    }
+
+
     private static final String DATABASE_CREATE =
             "create table notes (_id integer primary key autoincrement, "
                     + "title text not null, body text not null,"
@@ -155,6 +197,9 @@ public class NotesDbAdapter {
      * @return rowId or -1 if failed
      */
     public long createNote(String title, String body, int id_category, Date activationDate, Date expirationDate) {
+        if (title == null || title == "") {
+            return -1;
+        }
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
@@ -165,6 +210,9 @@ public class NotesDbAdapter {
     }
 
     public long createCategory(String title){
+        if (title == null || title == "") {
+            return -1;
+        }
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
 
@@ -196,6 +244,16 @@ public class NotesDbAdapter {
         return mDb.delete(DATABASE_TABLE_CATEGORIES, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    public void cleanNotes(){
+        Cursor allNotes = mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
+                KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE}, null, null, null, null, KEY_TITLE);
+        allNotes.moveToFirst();
+        while(!allNotes.isAfterLast()){
+            long id_nota = allNotes.getLong(allNotes.getColumnIndex("_id"));
+            deleteNote(id_nota);
+        }
+    }
+
     /**
      * Return a Cursor over the list of all notes in the database
      *
@@ -210,7 +268,7 @@ public class NotesDbAdapter {
 
     public Cursor fetchNotesFromCategory(int id_category){
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY, KEY_CATEGORY}, KEY_CATEGORY+"="+id_category, null, null, null, KEY_TITLE);
+                KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE}, KEY_CATEGORY+"="+id_category, null, null, null, KEY_TITLE);
     }
 
     public Cursor fetchAllCategories(){
@@ -254,7 +312,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchPredictedNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
@@ -267,7 +325,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchActiveNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
@@ -280,7 +338,7 @@ public class NotesDbAdapter {
     }
 
     public Cursor fetchExpiredNotes() throws SQLException {
-        Date now = new Date();
+        Date now = dS.getNow();
         Cursor mCursor =
                 mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
                                 KEY_TITLE, KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE},
@@ -303,6 +361,12 @@ public class NotesDbAdapter {
      * @return true if the note was successfully updated, false otherwise
      */
     public boolean updateNote(long rowId, String title, String body, int id_categoria, Date activationDate, Date expirationDate) {
+        if (title == null || title == "") {
+            return false;
+        }
+        if (body == null || body == "") {
+            return false;
+        }
         if(rowId > 0){
             ContentValues args = new ContentValues();
             args.put(KEY_TITLE, title);
@@ -318,6 +382,9 @@ public class NotesDbAdapter {
     }
 
     public boolean updateCategory(long rowId, String title) {
+        if (title == null || title == "") {
+            return false;
+        }
         ContentValues args = new ContentValues();
         args.put(KEY_TITLE, title);
 
