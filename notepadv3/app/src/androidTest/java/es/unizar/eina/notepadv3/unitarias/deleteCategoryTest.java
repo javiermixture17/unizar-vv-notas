@@ -1,6 +1,4 @@
-package es.unizar.eina.notepadv3;
-
-import android.database.Cursor;
+package es.unizar.eina.notepadv3.unitarias;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,13 +11,16 @@ import java.util.Date;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import es.unizar.eina.notepadv3.Notepadv3;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
-public class createCategoryTest {
+public class deleteCategoryTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    boolean result;
     long idNuevaCategoria;
     String titulo;
 
@@ -27,6 +28,8 @@ public class createCategoryTest {
     public void setUp() {
         mNotepad = activityRule.getActivity();
         titulo = "HolaCat";
+
+        idNuevaCategoria = mNotepad.getAdapter().createCategory(titulo);
     }
 
     @After
@@ -36,22 +39,15 @@ public class createCategoryTest {
 
     @Test()
     public void test_P1(){
-        idNuevaCategoria = mNotepad.getAdapter().createCategory(titulo);
-        Cursor salida = mNotepad.getAdapter().fetchCategory(idNuevaCategoria);
-        assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
+        result = mNotepad.getAdapter().deleteCategory(idNuevaCategoria);
+        assertEquals(result, true);
     }
 
 
     @Test()
     public void test_P2(){
-        idNuevaCategoria = mNotepad.getAdapter().createCategory(null);
-        assertEquals(idNuevaCategoria, -1);
+        result = mNotepad.getAdapter().deleteCategory(-2);
+        assertEquals(result, false);
 
-    }
-
-    @Test()
-    public void test_P3(){
-        idNuevaCategoria = mNotepad.getAdapter().createCategory("");
-        assertEquals(idNuevaCategoria, -1);
     }
 }

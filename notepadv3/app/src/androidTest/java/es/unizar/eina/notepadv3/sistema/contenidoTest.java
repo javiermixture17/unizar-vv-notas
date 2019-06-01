@@ -1,4 +1,4 @@
-package es.unizar.eina.notepadv3;
+package es.unizar.eina.notepadv3.sistema;
 
 import android.database.Cursor;
 
@@ -13,6 +13,9 @@ import java.util.Date;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
+
+import es.unizar.eina.notepadv3.Notepadv3;
+import es.unizar.eina.notepadv3.NotesDbAdapter;
 
 import static org.junit.Assert.assertEquals;
 

@@ -17,12 +17,12 @@ class DateSelector {
     private boolean esTest;
     private Date now;
 
-    public DateSelector(boolean _esTest){
-        esTest= _esTest;
+    public DateSelector(){
+        esTest= false;
     }
 
-    public void setTest(boolean _esTest){
-        esTest= _esTest;
+    public void setTest(){
+        esTest= true;
     }
 
     public void setDate(String _date) throws ParseException {
@@ -79,11 +79,20 @@ public class NotesDbAdapter {
     private SQLiteDatabase mDb;
 
     /**Seleccionar test o no*/
-    DateSelector dS = new DateSelector(false);
+    public DateSelector dS = new DateSelector();
 
     /**
      * Database creation sql statement
      */
+    public void setTest(){
+        dS.setTest();
+    }
+
+    public void setFakeDate(String date) throws ParseException{
+        dS.setDate(date);
+    }
+
+
     private static final String DATABASE_CREATE =
             "create table notes (_id integer primary key autoincrement, "
                     + "title text not null, body text not null,"
@@ -233,6 +242,16 @@ public class NotesDbAdapter {
             notasCategoriaBorrar.moveToNext();
         }
         return mDb.delete(DATABASE_TABLE_CATEGORIES, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+    public void cleanNotes(){
+        Cursor allNotes = mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
+                KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE}, null, null, null, null, KEY_TITLE);
+        allNotes.moveToFirst();
+        while(!allNotes.isAfterLast()){
+            long id_nota = allNotes.getLong(allNotes.getColumnIndex("_id"));
+            deleteNote(id_nota);
+        }
     }
 
     /**

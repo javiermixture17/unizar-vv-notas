@@ -1,4 +1,4 @@
-package es.unizar.eina.notepadv3;
+package es.unizar.eina.notepadv3.unitarias;
 
 import android.database.Cursor;
 
@@ -13,12 +13,17 @@ import java.util.Date;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import es.unizar.eina.notepadv3.Notepadv3;
+import es.unizar.eina.notepadv3.NotesDbAdapter;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class updateCategoryTest {
     @Rule
-    public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
+    public ActivityTestRule<
+
+            Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
     boolean result;
     long idNuevaCategoria;

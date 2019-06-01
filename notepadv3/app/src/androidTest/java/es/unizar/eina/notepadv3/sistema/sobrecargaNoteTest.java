@@ -1,4 +1,4 @@
-package es.unizar.eina.notepadv3;
+package es.unizar.eina.notepadv3.sistema;
 
 import android.database.Cursor;
 
@@ -14,23 +14,26 @@ import java.util.Date;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import es.unizar.eina.notepadv3.Notepadv3;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
-public class volumenNoteTest {
+public class sobrecargaNoteTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
-    private static ArrayList<Long> rowIdsCreados;
+    long idNuevaNota;
+    String titulo;
     int categoriaId;
     Date fecha;
-
-
+    private static ArrayList<Long> rowIdsCreados;
 
     @Before
     public void setUp() {
         mNotepad = activityRule.getActivity();
         rowIdsCreados = new ArrayList<>();
+        titulo = "Hola";
         categoriaId = -1;
         fecha = new Date();
     }
@@ -42,14 +45,13 @@ public class volumenNoteTest {
             mNotepad.getAdapter().deleteNote(rowId);
         }
         */
-
     }
 
     @Test()
     public void test_P1(){
-        for(int i = 0; i < 1000; i++) {
-            rowIdsCreados.add(mNotepad.getAdapter().createNote("Nota " + i, "Soy una nota", categoriaId, fecha, fecha));
+        String str = "a";
+        for(int i = 0; i <= 29000000; i = i + 1000000){
+            rowIdsCreados.add(mNotepad.getAdapter().createNote(titulo, new String(new char[i]).replace("\0", "a"), categoriaId, fecha, fecha));
         }
     }
-
 }
