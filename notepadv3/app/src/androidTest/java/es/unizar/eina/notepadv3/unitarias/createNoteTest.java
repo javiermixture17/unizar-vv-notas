@@ -1,4 +1,4 @@
-package es.unizar.eina.notepadv3;
+package es.unizar.eina.notepadv3.unitarias;
 
 import android.database.Cursor;
 
@@ -13,18 +13,29 @@ import java.util.Date;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import static org.junit.Assert.*;
+import es.unizar.eina.notepadv3.Notepadv3;
+import es.unizar.eina.notepadv3.NotesDbAdapter;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
-public class Notepadv3Test {
+public class createNoteTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
     long idNuevaNota;
+    String titulo;
+    String cuerpo;
+    int categoriaId;
+    Date fecha;
 
     @Before
     public void setUp() {
         mNotepad = activityRule.getActivity();
+        titulo = "Hola";
+        cuerpo = "Soy una nota";
+        categoriaId = -1;
+        fecha = new Date();
     }
 
     @After
@@ -34,18 +45,6 @@ public class Notepadv3Test {
 
     @Test()
     public void test_P1(){
-        int numeroNotas   = mNotepad.getAdapter().fetchAllNotes().getCount();
-        idNuevaNota = mNotepad.getAdapter().createNote("Prueba", "", -1, new Date(), new Date());
-        Cursor notasTrasInsercion = mNotepad.getAdapter().fetchAllNotes();
-        assertEquals(numeroNotas + 1, notasTrasInsercion.getCount());
-    }
-
-    @Test()
-    public void test_P2(){
-        String titulo = "test2";
-        String cuerpo = "abc";
-        int categoriaId = -1;
-        Date fecha = new Date();
         idNuevaNota = mNotepad.getAdapter().createNote(titulo, cuerpo, categoriaId, fecha, fecha);
         Cursor salida = mNotepad.getAdapter().fetchNote(idNuevaNota);
         assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
@@ -53,6 +52,24 @@ public class Notepadv3Test {
         assertEquals(categoriaId, salida.getInt(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_CATEGORY)));
         assertEquals(fecha.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_ACTIVATION_DATE)));
         assertEquals(fecha.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_EXPIRATION_DATE)));
+    }
 
+
+    @Test()
+    public void test_P2(){
+        idNuevaNota = mNotepad.getAdapter().createNote(null, cuerpo, categoriaId, fecha, fecha);
+        assertEquals(idNuevaNota, -1);
+
+    }
+
+    @Test()
+    public void test_P3(){
+        idNuevaNota = mNotepad.getAdapter().createNote("", cuerpo, categoriaId, fecha, fecha);
+        assertEquals(idNuevaNota, -1);
+    }
+
+    @Test()
+    public void test_P4(){
+        mNotepad.getAdapter().createNote(titulo, null, categoriaId, fecha, fecha);
     }
 }
