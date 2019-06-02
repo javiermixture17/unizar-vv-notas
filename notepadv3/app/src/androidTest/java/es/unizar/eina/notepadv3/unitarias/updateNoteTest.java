@@ -18,7 +18,9 @@ import androidx.test.rule.ActivityTestRule;
 import es.unizar.eina.notepadv3.Notepadv3;
 import es.unizar.eina.notepadv3.NotesDbAdapter;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 public class updateNoteTest {
@@ -58,7 +60,7 @@ public class updateNoteTest {
     public void test_P1(){
         result = mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
         Cursor salida = mNotepad.getAdapter().fetchNote(idNuevaNota);
-        assertEquals(result, true);
+        assertTrue(result);
         assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
         assertEquals(cuerpo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
         assertEquals(categoriaId, salida.getInt(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_CATEGORY)));
@@ -70,32 +72,32 @@ public class updateNoteTest {
     @Test()
     public void test_P2(){
         result = mNotepad.getAdapter().updateNote(-2, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
-        assertEquals(result, false);
+        assertFalse(result);
 
     }
 
     @Test()
     public void test_P3(){
         result = mNotepad.getAdapter().updateNote(idNuevaNota, null, cuerpo, categoriaId, fechaAct, fechaCad);
-        assertEquals(result, false);
+        assertFalse(result);
     }
 
     @Test()
     public void test_P4(){
         result = mNotepad.getAdapter().updateNote(idNuevaNota, "", cuerpo, categoriaId, fechaAct, fechaCad);
-        assertEquals(result, false);
+        assertFalse(result);
     }
 
     @Test()
     public void test_P5(){
         result = mNotepad.getAdapter().updateNote(idNuevaNota, titulo, null, categoriaId, fechaAct, fechaCad);
-        assertEquals(result, false);
+        assertFalse(result);
     }
 
     @Test()
     public void test_P6() throws ParseException {
         fechaCad = sdf.parse("01/01/2019");
         result = mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
-        assertEquals(result, false);
+        assertFalse(result);
     }
 }
