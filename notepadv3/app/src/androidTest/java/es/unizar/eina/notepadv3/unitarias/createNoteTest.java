@@ -8,6 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -23,19 +25,22 @@ public class createNoteTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     long idNuevaNota;
     String titulo;
     String cuerpo;
     int categoriaId;
-    Date fecha;
+    Date fechaAct;
+    Date fechaCad;
 
     @Before
-    public void setUp() {
+    public void setUp() throws ParseException {
         mNotepad = activityRule.getActivity();
         titulo = "Hola";
         cuerpo = "Soy una nota";
         categoriaId = -1;
-        fecha = new Date();
+        fechaAct = sdf.parse("02/01/2019");
+        fechaCad = sdf.parse("03/01/2019");
     }
 
     @After
@@ -45,31 +50,38 @@ public class createNoteTest {
 
     @Test()
     public void test_P1(){
-        idNuevaNota = mNotepad.getAdapter().createNote(titulo, cuerpo, categoriaId, fecha, fecha);
+        idNuevaNota = mNotepad.getAdapter().createNote(titulo, cuerpo, categoriaId, fechaAct, fechaCad);
         Cursor salida = mNotepad.getAdapter().fetchNote(idNuevaNota);
         assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
         assertEquals(cuerpo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
         assertEquals(categoriaId, salida.getInt(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_CATEGORY)));
-        assertEquals(fecha.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_ACTIVATION_DATE)));
-        assertEquals(fecha.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_EXPIRATION_DATE)));
+        assertEquals(fechaAct.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_ACTIVATION_DATE)));
+        assertEquals(fechaCad.getTime(), salida.getLong(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_EXPIRATION_DATE)));
     }
 
 
     @Test()
     public void test_P2(){
-        idNuevaNota = mNotepad.getAdapter().createNote(null, cuerpo, categoriaId, fecha, fecha);
+        idNuevaNota = mNotepad.getAdapter().createNote(null, cuerpo, categoriaId, fechaAct, fechaCad);
         assertEquals(idNuevaNota, -1);
 
     }
 
     @Test()
     public void test_P3(){
-        idNuevaNota = mNotepad.getAdapter().createNote("", cuerpo, categoriaId, fecha, fecha);
+        idNuevaNota = mNotepad.getAdapter().createNote("", cuerpo, categoriaId, fechaAct, fechaCad);
         assertEquals(idNuevaNota, -1);
     }
 
     @Test()
     public void test_P4(){
-        mNotepad.getAdapter().createNote(titulo, null, categoriaId, fecha, fecha);
+        mNotepad.getAdapter().createNote(titulo, null, categoriaId, fechaAct, fechaCad);
+    }
+
+    @Test()
+    public void test_P5() throws ParseException {
+        fechaCad = sdf.parse("01/01/2019");
+        mNotepad.getAdapter().createNote(titulo, null, categoriaId, fechaAct, fechaCad);
+        assertEquals(idNuevaNota, -1);
     }
 }

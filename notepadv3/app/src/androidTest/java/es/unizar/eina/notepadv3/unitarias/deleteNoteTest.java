@@ -8,6 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -22,22 +24,25 @@ public class deleteNoteTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     boolean result;
     String titulo;
     String cuerpo;
     int categoriaId;
-    Date fecha;
+    Date fechaAct;
+    Date fechaCad;
     long idNuevaNota;
 
     @Before
-    public void setUp() {
+    public void setUp() throws ParseException {
         mNotepad = activityRule.getActivity();
         titulo = "Hola";
         cuerpo = "Soy una nota";
         categoriaId = -1;
-        fecha = new Date();
+        fechaAct = sdf.parse("02/01/2019");
+        fechaCad = sdf.parse("03/01/2019");
 
-        idNuevaNota = mNotepad.getAdapter().createNote(titulo, cuerpo, categoriaId, fecha, fecha);
+        idNuevaNota = mNotepad.getAdapter().createNote(titulo, cuerpo, categoriaId, fechaAct, fechaCad);
     }
 
     @After

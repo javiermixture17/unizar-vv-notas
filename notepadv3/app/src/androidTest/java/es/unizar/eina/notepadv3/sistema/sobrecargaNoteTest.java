@@ -8,6 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,19 +25,22 @@ public class sobrecargaNoteTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     long idNuevaNota;
     String titulo;
     int categoriaId;
-    Date fecha;
+    Date fechaAct;
+    Date fechaCad;
     private static ArrayList<Long> rowIdsCreados;
 
     @Before
-    public void setUp() {
+    public void setUp() throws ParseException {
         mNotepad = activityRule.getActivity();
         rowIdsCreados = new ArrayList<>();
         titulo = "Hola";
         categoriaId = -1;
-        fecha = new Date();
+        fechaAct = sdf.parse("02/01/2019");
+        fechaCad = sdf.parse("03/01/2019");
     }
 
     @After
@@ -51,7 +56,7 @@ public class sobrecargaNoteTest {
     public void test_P1(){
         String str = "a";
         for(int i = 0; i <= 29000000; i = i + 1000000){
-            rowIdsCreados.add(mNotepad.getAdapter().createNote(titulo, new String(new char[i]).replace("\0", "a"), categoriaId, fecha, fecha));
+            rowIdsCreados.add(mNotepad.getAdapter().createNote(titulo, new String(new char[i]).replace("\0", "a"), categoriaId, fechaAct, fechaCad));
         }
     }
 }
