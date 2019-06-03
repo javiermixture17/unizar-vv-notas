@@ -36,6 +36,7 @@ public class fechasTest {
         mNotepad.getAdapter().setTest();
         mNotepad.getAdapter().setFakeDate("01/01/2019");
         mNotepad.getAdapter().cleanNotes();
+        mNotepad.getAdapter().cleanCategories();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         mNotepad.getAdapter().createNote("Nota test", "Esta es la nota de test", -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
     }

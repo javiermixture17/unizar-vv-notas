@@ -20,6 +20,16 @@ public class EspressoUtils {
         mDevice.pressBack();
     }
 
+    public static void confirmar(){
+        onView(withText("Confirm")).perform(click());
+    }
+
+    public static void rellenarNota(String nombre) {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        onView(withText("Add item")).perform(click());
+        onView(ViewMatchers.withId(R.id.title)).perform(typeText(nombre), closeSoftKeyboard());
+    }
+
     public static void rellenarCategoria(String nombre) {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText("Add category")).perform(click());
@@ -31,9 +41,16 @@ public class EspressoUtils {
         onView(withText(tipoFiltrado)).perform(click());
     }
 
-    public static void deleteNote(String nombre) {
+    public static void borrarNota(String nombre) {
         onView(withText(nombre)).perform(longClick());
         onView(withText("Delete note")).perform(click());
 
+    }
+
+    public static void editarNota(String nombreAntiguo, String nuevoNombre){
+        onView(withText(nombreAntiguo)).perform(longClick());
+        onView(withText("Edit note")).perform(click());
+        onView(ViewMatchers.withId(R.id.title)).perform(typeText(""), closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.title)).perform(typeText(nuevoNombre), closeSoftKeyboard());
     }
 }
