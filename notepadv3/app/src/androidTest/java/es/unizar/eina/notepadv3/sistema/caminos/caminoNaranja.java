@@ -13,9 +13,15 @@ import java.text.SimpleDateFormat;
 import es.unizar.eina.notepadv3.Notepadv3;
 
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.atras;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.borrarCategoria;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.borrarNota;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.confirmar;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.editarCategoria;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.editarNota;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.filtrarPorCategoria;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.filtrarPorFecha;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.listarCategorias;
+import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarCategoria;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarNota;
 
 
@@ -34,10 +40,10 @@ public class caminoNaranja {
         mNotepad.getAdapter().setFakeDate("05/01/2019");
         mNotepad.getAdapter().cleanNotes();
         mNotepad.getAdapter().cleanCategories();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        mNotepad.getAdapter().createNote("Nota test 1", "Esta es la nota de test", -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
+        rellenarNota("Nota test 1");
+        confirmar();
         for (int i = 0; i < 5; i++){
-            mNotepad.getAdapter().createCategory("Categoría " + i);
+            mNotepad.getAdapter().createCategory("Cat " + i);
         }
         System.out.println("FIN SETUP");
     }
@@ -51,11 +57,26 @@ public class caminoNaranja {
     @Test
     public void ejecutarCamino() {
         borrarNota("Nota test 1");
-        //rellenarNota("Nota test 2");
-        //confirmar();
-        //editarNota("Nota test 2", "Nota test 2 editada");
-        //atras();
-
+        rellenarNota("Nota test 2");
+        confirmar();
+        editarNota("Nota test 2", " editada");
+        atras();
+        filtrarPorCategoria("Cat 1");
+        listarCategorias();
+        borrarCategoria("Cat 0");
+        atras();
+        rellenarCategoria("Cat 5");
+        confirmar();
+        filtrarPorFecha("Filter expired notes");
+        rellenarCategoria("Cat 6");
+        confirmar();
+        listarCategorias();
+        editarCategoria("Cat 6", " editada");
+        confirmar();
+        borrarCategoria("Cat 5");
+        editarCategoria("Cat 4", " editada");
+        atras();
+        borrarCategoria("Cat 4");
     }
 
 }

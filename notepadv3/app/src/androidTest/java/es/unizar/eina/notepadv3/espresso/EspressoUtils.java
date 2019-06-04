@@ -11,6 +11,7 @@ import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.longClick;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -36,9 +37,14 @@ public class EspressoUtils {
         onView(ViewMatchers.withId(R.id.title)).perform(typeText(nombre), closeSoftKeyboard());
     }
 
-    public static void filtrar(String tipoFiltrado) {
+    public static void filtrarPorFecha(String tipoFiltrado) {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText(tipoFiltrado)).perform(click());
+    }
+
+    public static void filtrarPorCategoria(String nombreCategoria){
+        onView(ViewMatchers.withId(R.id.filtrador)).perform(click());
+        onView(withText(nombreCategoria)).perform(click());
     }
 
     public static void borrarNota(String nombre) {
@@ -47,10 +53,27 @@ public class EspressoUtils {
 
     }
 
+    public static void borrarCategoria(String nombre) {
+        onView(withText(nombre)).perform(longClick());
+        onView(withText("Delete category")).perform(click());
+
+    }
+
     public static void editarNota(String nombreAntiguo, String nuevoNombre){
         onView(withText(nombreAntiguo)).perform(longClick());
         onView(withText("Edit note")).perform(click());
-        onView(ViewMatchers.withId(R.id.title)).perform(typeText(""), closeSoftKeyboard());
         onView(ViewMatchers.withId(R.id.title)).perform(typeText(nuevoNombre), closeSoftKeyboard());
+    }
+
+    public static void editarCategoria(String nombreAntiguo, String nuevoNombre){
+        onView(withText(nombreAntiguo)).perform(longClick());
+        onView(withText("Edit category")).perform(click());
+        onView(ViewMatchers.withId(R.id.title)).perform(typeText(nuevoNombre), closeSoftKeyboard());
+    }
+
+    public static void listarCategorias(){
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        onView(withText("View categories")).perform(click());
+
     }
 }

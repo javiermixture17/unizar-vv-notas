@@ -245,23 +245,11 @@ public class NotesDbAdapter {
     }
 
     public void cleanNotes(){
-        Cursor allNotes = mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_BODY, KEY_CATEGORY, KEY_ACTIVATION_DATE, KEY_EXPIRATION_DATE}, null, null, null, null, KEY_TITLE);
-        allNotes.moveToFirst();
-        while(allNotes.moveToNext()){
-            long id_nota = allNotes.getLong(allNotes.getColumnIndex("_id"));
-            deleteNote(id_nota);
-        }
+        mDb.execSQL("delete from " + DATABASE_TABLE);
     }
 
     public void cleanCategories(){
-        Cursor allCategories = mDb.query(DATABASE_TABLE_CATEGORIES, new String[] {KEY_ROWID, KEY_TITLE},
-                null, null, null, null, KEY_TITLE);
-        allCategories.moveToFirst();
-        while(allCategories.moveToNext()){
-            long id_categoria = allCategories.getLong(allCategories.getColumnIndex("_id"));
-            deleteCategory(id_categoria);
-        }
+        mDb.execSQL("delete from " + DATABASE_TABLE_CATEGORIES);
     }
 
     /**
