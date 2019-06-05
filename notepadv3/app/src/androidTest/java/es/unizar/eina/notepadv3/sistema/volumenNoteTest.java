@@ -41,7 +41,7 @@ public class volumenNoteTest {
     public void tearDown(){
         /*
         for(long rowId : rowIdsCreados){
-            mNotepad.getAdapter().deleteNote(rowId);
+            mNotepad.getAdapter().borrarNota(rowId);
         }
         */
 

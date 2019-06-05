@@ -45,6 +45,7 @@ public class Notepadv3Test {
 
     @Test()
     public void test_P2(){
+        //Commit a Pedro
         String titulo = "test2";
         String cuerpo = "abc";
         int categoriaId = -1;
