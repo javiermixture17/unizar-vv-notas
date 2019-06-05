@@ -24,7 +24,7 @@ import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarCategoria;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarNota;
 
 
-public class caminoAmarillo {
+public class CaminoAmarillo {
 
     @Rule
     public ActivityTestRule<Notepadv3> mActivityRule =
@@ -33,7 +33,6 @@ public class caminoAmarillo {
 
     @Before
     public void setUp() throws ParseException {
-        System.out.println("EJECUTANDO SETUP");
         mNotepad = mActivityRule.getActivity();
         mNotepad.getAdapter().setTest();
         mNotepad.getAdapter().setFakeDate("05/01/2019");
@@ -48,7 +47,6 @@ public class caminoAmarillo {
         for (int i = 0; i < 5; i++){
             mNotepad.getAdapter().createCategory("Categoria " + i);
         }
-        System.out.println("FIN SETUP");
     }
 
     @After
