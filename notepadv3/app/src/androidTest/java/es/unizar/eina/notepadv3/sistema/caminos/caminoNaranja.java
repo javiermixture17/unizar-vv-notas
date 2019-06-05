@@ -61,22 +61,22 @@ public class caminoNaranja {
         confirmar();
         editarNota("Nota test 2", " editada");
         atras();
-        filtrarPorCategoria("Cat 1");
+        filtrarPorCategoria("Categoría 1");
         listarCategorias();
-        borrarCategoria("Cat 0");
+        borrarCategoria("Categoría 0");
         atras();
-        rellenarCategoria("Cat 5");
+        rellenarCategoria("Categoría 5");
         confirmar();
         filtrarPorFecha("Filter expired notes");
-        rellenarCategoria("Cat 6");
+        rellenarCategoria("Categoría 6");
         confirmar();
         listarCategorias();
-        editarCategoria("Cat 6", " editada");
+        editarCategoria("Categoría 6", " editada");
         confirmar();
-        borrarCategoria("Cat 5");
-        editarCategoria("Cat 4", " editada");
+        borrarCategoria("Categoría 5");
+        editarCategoria("Categoría 4", " editada");
         atras();
-        borrarCategoria("Cat 4");
+        borrarCategoria("Categoría 4");
     }
 
 }
