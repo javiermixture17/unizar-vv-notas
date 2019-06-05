@@ -8,8 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import es.unizar.eina.notepadv3.Notepadv3;
 
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.atras;
@@ -43,7 +41,7 @@ public class caminoNaranja {
         rellenarNota("Nota test 1");
         confirmar();
         for (int i = 0; i < 5; i++){
-            mNotepad.getAdapter().createCategory("Cat " + i);
+            mNotepad.getAdapter().createCategory("Categoria " + i);
         }
         System.out.println("FIN SETUP");
     }
@@ -61,22 +59,22 @@ public class caminoNaranja {
         confirmar();
         editarNota("Nota test 2", " editada");
         atras();
-        filtrarPorCategoria("Categoría 1");
+        filtrarPorCategoria("Categoria 1");
         listarCategorias();
-        borrarCategoria("Categoría 0");
+        borrarCategoria("Categoria 0");
         atras();
-        rellenarCategoria("Categoría 5");
+        rellenarCategoria("Categoria 5");
         confirmar();
-        filtrarPorFecha("Filter expired notes");
-        rellenarCategoria("Categoría 6");
+        filtrarPorFecha("Filter expired noted");
+        rellenarCategoria("Categoria 6");
         confirmar();
         listarCategorias();
-        editarCategoria("Categoría 6", " editada");
+        editarCategoria("Categoria 6", " editada");
         confirmar();
-        borrarCategoria("Categoría 5");
-        editarCategoria("Categoría 4", " editada");
+        borrarCategoria("Categoria 5");
+        editarCategoria("Categoria 4", " editada");
         atras();
-        borrarCategoria("Categoría 4");
+        borrarCategoria("Categoria 4 editada");
     }
 
 }
