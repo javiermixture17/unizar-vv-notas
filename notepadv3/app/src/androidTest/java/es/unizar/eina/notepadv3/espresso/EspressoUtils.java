@@ -37,6 +37,11 @@ public class EspressoUtils {
         onView(ViewMatchers.withId(R.id.title)).perform(typeText(nombre), closeSoftKeyboard());
     }
 
+    public static void ordenarPor(String tipoOrdenado) {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        onView(withText("Order by "+ tipoOrdenado)).perform(click());
+    }
+
     public static void filtrarPorFecha(String tipoFiltrado) {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getTargetContext());
         onView(withText(tipoFiltrado)).perform(click());
