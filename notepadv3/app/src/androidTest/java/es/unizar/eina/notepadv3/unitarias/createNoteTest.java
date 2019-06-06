@@ -81,7 +81,7 @@ public class createNoteTest {
     @Test()
     public void test_P5() throws ParseException {
         fechaCad = sdf.parse("01/01/2019");
-        mNotepad.getAdapter().createNote(titulo, null, categoriaId, fechaAct, fechaCad);
+        idNuevaNota= mNotepad.getAdapter().createNote(titulo, null, categoriaId, fechaAct, fechaCad);
         assertEquals(idNuevaNota, -1);
     }
 }

@@ -200,6 +200,9 @@ public class NotesDbAdapter {
         if (title == null || title == "") {
             return -1;
         }
+        if (activationDate.compareTo(expirationDate) >= 0 ){
+            return -1;
+        }
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_BODY, body);
@@ -365,6 +368,9 @@ public class NotesDbAdapter {
             return false;
         }
         if (body == null || body == "") {
+            return false;
+        }
+        if (activationDate.compareTo(expirationDate) >= 0 ){
             return false;
         }
         if(rowId > 0){

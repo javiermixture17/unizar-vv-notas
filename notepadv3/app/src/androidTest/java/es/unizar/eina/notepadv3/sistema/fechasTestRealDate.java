@@ -37,7 +37,8 @@ public class fechasTestRealDate {
         mNotepad = mActivityRule.getActivity();
         mNotepad.getAdapter().setTest();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        idNuevaNota = mNotepad.getAdapter().createNote("Nota test", "Esta es la nota de test", -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
+        idNuevaNota = mNotepad.getAdapter().createNote("Nota test", "Esta es la nota de test",
+                -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
     }
 
     @After
