@@ -25,7 +25,7 @@ import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarCategoria;
 import static es.unizar.eina.notepadv3.espresso.EspressoUtils.rellenarNota;
 
 
-public class caminoAzulOscuro {
+public class CaminoAzulOscuro {
 
     @Rule
     public ActivityTestRule<Notepadv3> mActivityRule =
