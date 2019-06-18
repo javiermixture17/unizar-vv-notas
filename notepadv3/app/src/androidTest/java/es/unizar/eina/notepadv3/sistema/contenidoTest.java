@@ -9,6 +9,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -24,17 +26,20 @@ public class contenidoTest {
     @Rule
     public ActivityTestRule<Notepadv3> activityRule = new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     long idNuevaNota;
     String cuerpo;
     int categoriaId;
-    Date fecha;
+    Date fechaAct;
+    Date fechaCad;
 
 
     @Before
-    public void setUp() {
+    public void setUp() throws ParseException {
         mNotepad = activityRule.getActivity();
         categoriaId = -1;
-        fecha = new Date();
+        fechaAct = sdf.parse("02/01/2019");
+        fechaCad = sdf.parse("03/01/2019");
     }
 
     @After
@@ -45,7 +50,7 @@ public class contenidoTest {
     @Test()
     public void test_P1(){
         String titulo = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{¦}~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶•¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑∓∔∕∖∗∘∙√∛∜∝∞∟∠∡∢∣∤∥∦∧∨∩∪∫∬∭∮∯∰∱∲∳∴∵∶∷∸∹∺∻∼∽∾∿≀≁≂≃≄≅≆≇≈≉≊≋≌≍≎≏≐≑≒≓≔≕≖≗≘≙≚≛≜≝≞≟≠≡≢≣≤≥≦≧≨≩≪≫≬≭≮≯≰≱≲≳≴≵≶≷≸≹≺≻≼≽≾≿⊀⊁⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⊌⊍⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊚⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊦⊧⊨⊩⊪⊫⊬⊭⊮⊯⊰⊱⊲⊳⊴⊵⊶⊷⊸⊹⊺⊻⊼⊽⊾⊿⋀⋁⋂⋃⋄⋅⋆⋇⋈⋉⋊⋋⋌⋍⋎⋏⋐⋑⋒⋓⋔⋕⋖⋗⋘⋙⋚⋛⋜⋝⋞⋟⋠⋡⋢⋣⋤⋥⋦⋧⋨⋩⋪⋫⋬⋭⋮⋯⋰⋱⋲⋳⋴⋵⋶⋷⋸⋹⋺⋻⋼⋽⋾⋿";
-        idNuevaNota = mNotepad.getAdapter().createNote(titulo, "Soy una nota", categoriaId, fecha, fecha);
+        idNuevaNota = mNotepad.getAdapter().createNote(titulo, "Soy una nota", categoriaId, fechaAct, fechaCad);
         Cursor salida = mNotepad.getAdapter().fetchNote(idNuevaNota);
         assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
     }
@@ -57,8 +62,8 @@ public class contenidoTest {
         int hex = (char) 0x0;
         while (i<174){
             hex = hex+1;
-            mNotepad.getAdapter().createNote(String.valueOf((char) hex), Integer.toString(i), categoriaId, fecha, fecha);
-            mNotepad.getAdapter().createNote(Integer.toString(i)+String.valueOf((char) hex)+Integer.toString(i), Integer.toString(i), categoriaId, fecha, fecha);
+            mNotepad.getAdapter().createNote(String.valueOf((char) hex), Integer.toString(i), categoriaId, fechaAct, fechaCad);
+            mNotepad.getAdapter().createNote(Integer.toString(i)+String.valueOf((char) hex)+Integer.toString(i), Integer.toString(i), categoriaId, fechaAct, fechaCad);
             i++;
         }
 

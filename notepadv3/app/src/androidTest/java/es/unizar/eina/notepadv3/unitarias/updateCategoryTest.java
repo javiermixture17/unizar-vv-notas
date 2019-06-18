@@ -16,7 +16,9 @@ import androidx.test.rule.ActivityTestRule;
 import es.unizar.eina.notepadv3.Notepadv3;
 import es.unizar.eina.notepadv3.NotesDbAdapter;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 public class updateCategoryTest {
@@ -48,7 +50,7 @@ public class updateCategoryTest {
     public void test_P1(){
         result = mNotepad.getAdapter().updateCategory(idNuevaCategoria, titulo);
         Cursor salida = mNotepad.getAdapter().fetchCategory(idNuevaCategoria);
-        assertEquals(result, true);
+        assertTrue(result);
         assertEquals(titulo, salida.getString(salida.getColumnIndexOrThrow(NotesDbAdapter.KEY_TITLE)));
     }
 
@@ -56,19 +58,19 @@ public class updateCategoryTest {
     @Test()
     public void test_P2(){
         result = mNotepad.getAdapter().updateCategory(-2, titulo);
-        assertEquals(result, false);
+        assertFalse(result);
 
     }
 
     @Test()
     public void test_P3(){
         result = mNotepad.getAdapter().updateCategory(idNuevaCategoria, null);
-        assertEquals(result, false);
+        assertFalse(result);
     }
 
     @Test()
     public void test_P4(){
         result = mNotepad.getAdapter().updateCategory(idNuevaCategoria, "");
-        assertEquals(result, false);
+        assertFalse(result);
     }
 }
