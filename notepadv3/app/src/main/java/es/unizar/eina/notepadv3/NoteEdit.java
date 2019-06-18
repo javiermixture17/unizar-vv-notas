@@ -131,6 +131,7 @@ public class NoteEdit extends AppCompatActivity {
             public void onClick(View view) {
             if(!mTitleText.getText().toString().trim().equalsIgnoreCase("")) {
                 setResult(RESULT_OK);
+                saveState();
                 finish();
             }else{
                 mTitleText.setError("Title must not be blank");
@@ -201,15 +202,6 @@ public class NoteEdit extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         saveState();
         outState.putSerializable(NotesDbAdapter.KEY_ROWID, mRowId);
-    }
-
-    /**
-     * Pausado de la actividad de edicion de una nota
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
-        saveState();
     }
 
     /**
