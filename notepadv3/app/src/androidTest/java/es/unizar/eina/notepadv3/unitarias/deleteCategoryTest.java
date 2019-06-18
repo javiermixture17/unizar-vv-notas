@@ -13,7 +13,9 @@ import androidx.test.rule.ActivityTestRule;
 
 import es.unizar.eina.notepadv3.Notepadv3;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 public class deleteCategoryTest {
@@ -40,14 +42,14 @@ public class deleteCategoryTest {
     @Test()
     public void test_P1(){
         result = mNotepad.getAdapter().deleteCategory(idNuevaCategoria);
-        assertEquals(result, true);
+        assertTrue(result);
     }
 
 
     @Test()
     public void test_P2(){
         result = mNotepad.getAdapter().deleteCategory(-2);
-        assertEquals(result, false);
+        assertFalse(result);
 
     }
 }

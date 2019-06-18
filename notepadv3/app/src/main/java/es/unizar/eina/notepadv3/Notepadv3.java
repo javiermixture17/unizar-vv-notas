@@ -25,10 +25,6 @@ import java.util.List;
 
 import es.unizar.eina.send.SendAbstractionImpl;
 
-import static es.unizar.eina.notepadv3.Test.borrarNotas;
-import static es.unizar.eina.notepadv3.Test.ejecucionTest;
-import static es.unizar.eina.notepadv3.Test.generarNotas;
-import static es.unizar.eina.notepadv3.Test.sobrecargaTest;
 
 /**
  * Clase principal de la aplicacion Notas.
@@ -176,10 +172,6 @@ public class Notepadv3 extends AppCompatActivity {
         menu.add(Menu.NONE, VIEW_CAT_ID, Menu.NONE, R.string.menu_view_cat);
         menu.add(Menu.NONE, ORDER_TITLE_ID, Menu.NONE, R.string.menu_order_title);
         menu.add(Menu.NONE, ORDER_CAT_ID, Menu.NONE, R.string.menu_order_cat);
-        menu.add(Menu.NONE, EXEC_TEST_ID, Menu.NONE, R.string.exec_tests);
-        menu.add(Menu.NONE, EXEC_CREATE_NOTES_TEST_ID, Menu.NONE, R.string.exec_create_notes_tests);
-        menu.add(Menu.NONE, EXEC_DELETE_NOTES_TEST_ID, Menu.NONE, R.string.exec_delete_notes_tests);
-        menu.add(Menu.NONE, EXEC_SOBRECARGA_TEST_ID, Menu.NONE, R.string.exec_sobrecarga_test);
         menu.add(Menu.NONE, FILTER_PREDICTED, Menu.NONE, R.string.filter_predicted);
         menu.add(Menu.NONE, FILTER_ACTIVE, Menu.NONE, R.string.filter_active);
         menu.add(Menu.NONE, FILTER_EXPIRED, Menu.NONE, R.string.filter_expired);
@@ -208,21 +200,6 @@ public class Notepadv3 extends AppCompatActivity {
                 return true;
             case ORDER_CAT_ID:
                 orderCategory();
-                return true;
-            case EXEC_TEST_ID:
-                ejecucionTest(mDbHelper);
-                return true;
-            case EXEC_CREATE_NOTES_TEST_ID:
-                generarNotas(1000, mDbHelper);
-                fillData();
-                return true;
-            case EXEC_DELETE_NOTES_TEST_ID:
-                borrarNotas(mDbHelper);
-                fillData();
-                return true;
-            case EXEC_SOBRECARGA_TEST_ID:
-                sobrecargaTest(mDbHelper);
-                fillData();
                 return true;
             case FILTER_PREDICTED:
                 filterTimed(FILTER_PREDICTED);

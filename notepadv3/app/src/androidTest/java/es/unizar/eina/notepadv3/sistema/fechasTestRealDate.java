@@ -2,6 +2,7 @@ package es.unizar.eina.notepadv3.sistema;
 
 import androidx.test.rule.ActivityTestRule;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,13 +18,14 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-public class fechasTest {
+public class fechasTestRealDate {
 
 
     @Rule
     public ActivityTestRule<Notepadv3> mActivityRule =
             new ActivityTestRule<>(Notepadv3.class);
     Notepadv3 mNotepad;
+    private long idNuevaNota;
 
 
     @Before
@@ -34,17 +36,47 @@ public class fechasTest {
         mNotepad.getAdapter().cleanNotes();
         mNotepad.getAdapter().cleanCategories();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        mNotepad.getAdapter().createNote("Nota test", "Esta es la nota de test", -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
+        idNuevaNota = mNotepad.getAdapter().createNote("Nota test", "Esta es la nota de test",
+                -1, sdf.parse("02/01/2019"), sdf.parse("04/01/2019"));
+    }
+
+    @After
+    public void tearDown(){
+        mNotepad.getAdapter().deleteNote(idNuevaNota);
     }
 
     @Test
     public void test_P1() throws ParseException{
         EspressoUtils.filtrarPorFecha("Filter predicted notes");
 
+        EspressoUtils.filtrar("Filter predicted notes");
+        onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
+        EspressoUtils.filtrar("Filter expired notes");
+        onView(withText("Nota test")).check(doesNotExist());
+
+    }
+
+    @Test
+    public void test_P2() throws ParseException{
         mNotepad.getAdapter().setFakeDate("03/01/2019");
         EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrar("Filter active notes");
+        onView(withText("Nota test"));
+        EspressoUtils.filtrar("Filter expired notes");
+        onView(withText("Nota test")).check(doesNotExist());
+
+
+        mNotepad.getAdapter().setFakeDate("05/01/2019");
+
+        EspressoUtils.filtrar("Filter predicted notes");
+        onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrar("Filter active notes");
+        onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrar("Filter expired notes");
+        onView(withText("Nota test"));
 
     }
 
