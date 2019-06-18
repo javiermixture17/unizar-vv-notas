@@ -30,5 +30,5 @@
     <string name="exec_sobrecarga_test">Overload test</string>
     <string name="filter_predicted">Filter predicted notes</string>
     <string name="filter_active">Filter active notes</string>
-    <string name="filter_expired">Filter expired noted</string>
+    <string name="filter_expired">Filter expired notes</string>
 </resources>

@@ -59,7 +59,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test"));
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("08/01/2019");
@@ -69,7 +69,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -85,7 +85,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test"));
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("08/01/2019");
@@ -96,7 +96,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test"));
 
     }
@@ -112,7 +112,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("11/01/2019");
@@ -122,7 +122,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test"));
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -138,7 +138,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaCad = sdf.parse("09/01/2019");
@@ -148,7 +148,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test"));
 
     }
@@ -164,7 +164,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test"));
 
         fechaAct = sdf.parse("11/01/2019");
@@ -175,7 +175,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test"));
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -191,7 +191,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaCad = sdf.parse("14/01/2019");
@@ -201,7 +201,7 @@ public class fechasTestActExpDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }

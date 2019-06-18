@@ -54,7 +54,7 @@ public class fechasTestRealDate {
         onView(withText("Nota test"));
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         mNotepad.getAdapter().setFakeDate("03/01/2019");
@@ -63,7 +63,7 @@ public class fechasTestRealDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -76,7 +76,7 @@ public class fechasTestRealDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
 
@@ -86,7 +86,7 @@ public class fechasTestRealDate {
         onView(withText("Nota test")).check(doesNotExist());
         EspressoUtils.filtrar("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired noted");
+        EspressoUtils.filtrar("Filter expired notes");
         onView(withText("Nota test"));
 
     }
