@@ -47,13 +47,22 @@ public class fechasTestRealDate {
 
     @Test
     public void test_P1() throws ParseException{
-        EspressoUtils.filtrarPorFecha("Filter predicted notes");
+        mNotepad.getAdapter().setFakeDate("01/01/2019");
 
-        EspressoUtils.filtrar("Filter predicted notes");
-        onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
+        onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
+        onView(withText("Nota test")).check(doesNotExist());
+
+        mNotepad.getAdapter().setFakeDate("03/01/2019");
+
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
+        onView(withText("Nota test")).check(doesNotExist());
+        EspressoUtils.filtrarPorFecha("Filter active notes");
+        onView(withText("Nota test"));
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -61,21 +70,22 @@ public class fechasTestRealDate {
     @Test
     public void test_P2() throws ParseException{
         mNotepad.getAdapter().setFakeDate("03/01/2019");
+
         EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
 
         mNotepad.getAdapter().setFakeDate("05/01/2019");
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test"));
 
     }

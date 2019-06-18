@@ -55,21 +55,21 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("08/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -81,22 +81,22 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("08/01/2019");
         fechaCad = sdf.parse("09/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test"));
 
     }
@@ -108,21 +108,21 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaAct = sdf.parse("11/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -134,21 +134,21 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaCad = sdf.parse("09/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test"));
 
     }
@@ -160,22 +160,22 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test"));
 
         fechaAct = sdf.parse("11/01/2019");
         fechaCad = sdf.parse("14/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
@@ -187,21 +187,21 @@ public class fechasTestActExpDate {
 
         idNuevaNota = mNotepad.getAdapter().createNote(titulo,cuerpo, categoriaId,fechaAct ,fechaCad );
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
         fechaCad = sdf.parse("14/01/2019");
         mNotepad.getAdapter().updateNote(idNuevaNota, titulo, cuerpo, categoriaId, fechaAct, fechaCad);
 
-        EspressoUtils.filtrar("Filter predicted notes");
+        EspressoUtils.filtrarPorFecha("Filter predicted notes");
         onView(withText("Nota test")).check(doesNotExist());
-        EspressoUtils.filtrar("Filter active notes");
+        EspressoUtils.filtrarPorFecha("Filter active notes");
         onView(withText("Nota test"));
-        EspressoUtils.filtrar("Filter expired notes");
+        EspressoUtils.filtrarPorFecha("Filter expired notes");
         onView(withText("Nota test")).check(doesNotExist());
 
     }
